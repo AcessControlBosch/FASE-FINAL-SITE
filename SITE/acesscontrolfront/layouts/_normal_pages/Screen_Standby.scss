@@ -1,0 +1,42 @@
+.container{
+
+    .view-center{
+        width: 100%;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .text-info{
+            font-family: "Bosch_Sans_Bold";
+            font-size: 30px;
+            text-align: center;
+            color: var(--green)
+        }
+
+        .btn_off{
+            margin: 50px;
+            padding: 15px;
+            width: 120px;
+            border-radius: 10px;
+            border: none;
+            background-color: var(--green);
+
+            .text-btn-off{
+                font-family: "Bosch_Sans_Bold";
+            }
+
+            &:hover{
+                background-color: var(--hoverGreen);
+                color: white;
+                cursor: pointer;
+            }
+
+
+        }
+
+    }
+
+
+}

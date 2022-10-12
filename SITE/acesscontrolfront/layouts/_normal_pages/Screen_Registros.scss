@@ -1,0 +1,58 @@
+.content-table{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .index-table{
+        // background-color: blue;
+        width: 60%;
+        align-items: center;
+        justify-content: center;
+
+        .table-register{
+            width: 100%;
+            height: auto;
+            border-collapse: collapse;
+
+            .td-register, .th-register{
+                border: 1px solid #ddd;
+                padding: 8px;
+
+                .text-table{
+                    font-family: "Bosch_Sans_Regular";
+                    font-size: 14px;
+                }
+
+                .text-align-center{
+                    text-align: center;
+                }
+
+                .title-table{
+                    font-family: "Bosch_Sans_Bold";
+                    font-size: 18px;
+                    text-align: center;
+                }
+
+
+            }
+
+            .th-register{
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: var(--green);
+                color: white; 
+            }
+
+            //#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+            //#customers tr:hover {background-color: #ddd;}
+
+        }
+
+
+
+    }
+
+}
