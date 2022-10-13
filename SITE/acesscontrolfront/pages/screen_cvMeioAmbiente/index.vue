@@ -202,6 +202,8 @@ export default {
                 this.$axios.post(this.$store.state.BASE_URL + "/releasemachines/", bodyRealised).then((response) => {
 
                     console.log("Inserção nas maquinas liberadas")
+
+                    console.log(response)
                     
                     let teste = []
                     let idrealesed = 0
@@ -209,6 +211,8 @@ export default {
                     teste.push(response.data[0])
 
                     idrealesed = teste[0].id
+
+                    console.log(idrealesed)
                     
                     this.$store.dispatch("SET_ID_REALISED", idrealesed);
 

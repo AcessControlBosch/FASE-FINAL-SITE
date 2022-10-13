@@ -9,14 +9,14 @@ from django.utils import timezone
 #User._meta.get_field('email').null = False
 
 class JobPosition(models.Model):
-    # permission_classes = (IsAuthenticated,)
+
     typeJob = models.CharField(max_length=25)
+
     def __str__(self):
         return self.typeJob
 
 class Associate(models.Model):
 
-    # permission_classes = (IsAuthenticated,)
     name = models.CharField(max_length=100)
     EDV = models.CharField(max_length=10)
     id_card = models.CharField(max_length=30, null=True, blank= True, default=0)
@@ -30,8 +30,6 @@ class Associate(models.Model):
 
 class Machine(models.Model):
 
-    # permission_classes = (IsAuthenticated,)
-
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=200)
     status = models.BooleanField()
@@ -42,8 +40,6 @@ class Machine(models.Model):
         return self.name
 
 class Question(models.Model):
-
-    # permission_classes = (IsAuthenticated,)
 
     type = models.CharField(max_length=15)
 
@@ -58,15 +54,13 @@ class GreenBook(models.Model):
 
 class Areas(models.Model):
 
-    # permission_classes = (IsAuthenticated,)
-
     name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
 
 class Maintenance(models.Model):
-    # permission_classes = (IsAuthenticated,)
+   
     date = models.DateField()
     Initialhour = models.TimeField()
     Finishhour = models.TimeField(blank=True, null=True)
@@ -81,8 +75,6 @@ class ReleaseMachine(models.Model):
     idAssociateFK = models.ForeignKey(Associate, related_name="associateReleaseMachine", on_delete=models.CASCADE)
 
 class Observation(models.Model):
-
-    # permission_classes = (IsAuthenticated,)
 
     date = models.DateField()
     hour = models.TimeField() # default='', blank=True, null=True

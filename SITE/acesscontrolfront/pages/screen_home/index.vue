@@ -33,7 +33,7 @@
 <script>
 export default {
 
-    middleware: 'auth',
+    //middleware: 'auth',
     name: 'screen_home',
 
     data(){

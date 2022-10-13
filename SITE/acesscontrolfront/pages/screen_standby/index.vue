@@ -50,39 +50,8 @@
 
         methods:{
 
-            updateMachinesFields: function(){
-
-                const date = new Date();
-                let bodyMachine = [];
-
-                let hour = date.getHours();          
-                let min = date.getMinutes();        
-                let seg = date.getSeconds();
-
-                let fullHour = hour + ":" + min + ":" + seg;
-
-                fullHour.toString(); 
-
-                let bodyUpdate = {
-                    date: this.dataMachine.date,
-                    hour: this.dataMachine.hour,
-                    hourFinish: fullHour,
-                    id: this.dataMachine.id,
-                    idAssociateFK: this.$store.state.usuario.id,
-                    idMachineFK: this.$store.state.machine.id
-                }
-
-                console.log(bodyUpdate)
-
-                //Atualização na hora em que a máquina foi desligada
-                this.$axios.put(this.$store.state.BASE_URL + "/releasemachines/" + this.$store.state.idrealised + "/", bodyUpdate).then((response) => {
-
-                    console.log("Ai caliquinha, deu bom!")
-                    this.$router.push("/screen_home")
-
-                })
-
-
+            redirectHome: function(){
+                this.$router.push("/screen_home");
             },
 
             turnOffMachine: function(){
@@ -102,9 +71,44 @@
 
                     console.log("Atualização ná maquina");
                     this.updateMachinesFields();
+                    this.redirectHome();
+                    
 
                 }).catch((error) => {
                     console.log(error)
+                })
+
+            },
+
+            updateMachinesFields:  function(){
+
+                const date = new Date();
+                let bodyMachine = [];
+
+                let hour = date.getHours();          
+                let min = date.getMinutes();        
+                let seg = date.getSeconds();
+
+                let fullHour = hour + ":" + min + ":" + seg;
+
+                fullHour.toString(); 
+
+                let bodyUpdate = {
+                    date: this.dataMachine.date,
+                    InitialHour: this.dataMachine.InitialHour,
+                    hourFinish: fullHour,
+                    id: this.dataMachine.id,
+                    idAssociateFK: this.$store.state.usuario.id,
+                    idMachineFK: this.$store.state.machine.id
+                }
+
+                console.log(bodyUpdate)
+
+                //Atualização na hora em que a máquina foi desligada
+                this.$axios.put(this.$store.state.BASE_URL + "/releasemachines/" + this.$store.state.idrealised + "/", bodyUpdate).then((response) => {
+
+                    console.log("Ai caliquinha, deu bom!");
+ 
                 })
 
             },

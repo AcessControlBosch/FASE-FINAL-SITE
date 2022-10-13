@@ -310,13 +310,13 @@ class ReleaseMachineAPI(APIView):
             releaseMachineTableResult = ReleaseMachine.objects.get(id=pk)
             serializer = ReleaseMachineTable(releaseMachineTableResult)
             return Response(serializer.data)
-
+ 
     def post(self, request):
 
         serializer = ReleaseMachineTable(data=request.data, many=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()        
-        return Response({"msg": "Inserido com sucesso"})
+        return Response(serializer.data)
     
     def put(self, request, pk=''):
 

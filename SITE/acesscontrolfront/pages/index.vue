@@ -57,20 +57,28 @@ export default {
 
   },
 
-  beforeCreate(){
+  mounted(){
 
-    this.$axios.get(this.$store.state.BASE_URL + "/associates").then((response) =>{
+    
+
+  },
+
+  methods: {
+
+    searchUser: async function(){
+
+      await this.$axios.get(this.$store.state.BASE_URL + "/associates").then((response) =>{
 
       this.dataUser = response.data;
-      //console.log(this.dataUser)
+      
+      this.setUser();
 
     }).catch((response) => {
       console.log(response)
     })
 
-  },
 
-  methods: {
+    },
 
     setUser: async function(){
 
@@ -99,7 +107,7 @@ export default {
 
         this.$auth.loginWith("local", {data: this.user}).then((response) => {
 
-          this.setUser();
+          this.searchUser();
 
           console.log("Usuário Logado")
 
