@@ -130,9 +130,9 @@ export default {
 
         redirectStandby: function(){
             
-            setInterval(() => {
-                this.$router.push('/screen_standby');
-            }, 3000);
+            
+            this.$router.push('/screen_standby');
+            
             
         },
 

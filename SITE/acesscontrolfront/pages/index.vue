@@ -57,12 +57,6 @@ export default {
 
   },
 
-  mounted(){
-
-    
-
-  },
-
   methods: {
 
     searchUser: async function(){
