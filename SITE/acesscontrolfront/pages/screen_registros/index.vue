@@ -24,6 +24,7 @@
                             <th class="th-register"><p class="title-table">Date</p></th>
                             <th class="th-register"><p class="title-table">Hour Initial</p></th>
                             <th class="th-register"><p class="title-table">Hour Finish</p></th>
+                            <th class="th-register"><p class="title-table">Type</p></th>
 
                         </tr>
 
@@ -32,6 +33,7 @@
                            <td class="td-register"><p class="text-table text-align-center">{{register.date}}</p></td>
                            <td class="td-register"><p class="text-table text-align-center">{{register.InitialHour}}</p></td>
                            <td class="td-register"><p class="text-table text-align-center">{{register.FinishHour}}</p></td>  
+                           <td class="td-register"><p class="text-table text-align-center">{{register.idAssociateFK.jobposition.typeJob}}</p></td>  
                         </tr>
 
                     </table>
@@ -39,10 +41,6 @@
                 </div>
 
             </div>
-
-        <!-- <div v-for="(register, id) in registerMachine.reverse()" :key="id" class="content-card"> -->
-        
-        <!-- </div> -->
 
         </div>
 

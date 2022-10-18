@@ -350,6 +350,22 @@ class GetReleaseMachineAPI(APIView):
 #------------------------------------------------------------
 #-----------------------Observation--------------------------
 #------------------------------------------------------------
+class GetObservationAPI(APIView):
+
+    def get(self, request, pk=''):
+
+        if pk == '':
+            ObservationResult = Observation.objects.all()
+            serializer = GetObservationTable(ObservationResult, many=True)
+            return Response(serializer.data)
+
+        else:
+            ObservationResult = Observation.objects.get(id=pk)
+            serializer = GetObservationTable(ObservationResult)
+            return Response(serializer.data)
+
+
+
 class ObservationAPI(APIView):
 
     def get(self, request, pk=''):

@@ -22,10 +22,11 @@ urlpatterns = [
 
     path("releasemachines/", ReleaseMachineAPI.as_view(), name="releasemachines"),
     path("releasemachines/<int:pk>/", ReleaseMachineAPI.as_view(), name="releasemachinesParameters"),
-    path("getreleasemachines/", GetReleaseMachineAPI.as_view(), name="releasemachines"),
+    path("getreleasemachines/", GetReleaseMachineAPI.as_view(), name="getreleasemachines"),
 
     path("observations/", ObservationAPI.as_view(), name="observations"),
     path("observations/<int:pk>/", ObservationAPI.as_view(), name="observationsParameters"),
+    path("getobservations/", GetObservationAPI.as_view(), name="getobservations"),
 
     path("maintenanceorders/", MaintenanceAPI.as_view(), name="maintenanceorders"),
     path("maintenanceorders/<int:pk>/", MaintenanceAPI.as_view(), name="maintenanceordersParameters"),

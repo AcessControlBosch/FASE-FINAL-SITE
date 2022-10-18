@@ -15,6 +15,15 @@ class AssociateTable(serializers.ModelSerializer):
         model = Associate
         fields = '__all__'
 
+class GetAssociateTable(serializers.ModelSerializer):
+
+    jobposition = JobPositionTable(read_only=True)
+
+    class Meta: 
+        many = True
+        model = Associate
+        fields = '__all__'
+
 class AssociateTableID(serializers.ModelSerializer):
 
     class Meta:
@@ -69,7 +78,7 @@ class ReleaseMachineTable(serializers.ModelSerializer):
 class GetReleaseMachineTable(serializers.ModelSerializer):
 
     idMachineFK = MachineTable(read_only=True)
-    idAssociateFK = AssociateTable(read_only=True)
+    idAssociateFK = GetAssociateTable(read_only=True)
 
     class Meta: 
         many = True
@@ -77,6 +86,13 @@ class GetReleaseMachineTable(serializers.ModelSerializer):
         fields = '__all__'
 
 class ObservationTable(serializers.ModelSerializer):
+
+    class Meta: 
+        many = True
+        model = Observation
+        fields = '__all__'
+
+class GetObservationTable(serializers.ModelSerializer):
 
     idMachineFK = MachineTable(read_only=True)
     idAssociateFK = AssociateTable(read_only=True)

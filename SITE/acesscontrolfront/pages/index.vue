@@ -23,11 +23,11 @@
 
           </div>
 
-          <div class="align-items-center">
+          <!-- <div class="align-items-center">
 
             <button class="btn-redirect" v-on:click="$router.push('/screen_criarConta')">Não possue conta? Clique aqui</button>
 
-          </div>
+          </div> -->
         
         </div>
     
