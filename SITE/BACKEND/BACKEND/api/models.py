@@ -73,6 +73,9 @@ class ReleaseMachine(models.Model):
     FinishHour = models.TimeField(blank=True, null=True)
     idMachineFK = models.ForeignKey(Machine, related_name="machineReleaseMachine", on_delete=models.CASCADE)
     idAssociateFK = models.ForeignKey(Associate, related_name="associateReleaseMachine", on_delete=models.CASCADE)
+    examA = models.CharField(max_length=10, default="")
+    examB = models.CharField(max_length=10, default="")
+    result = models.CharField(max_length=10, default="")
 
 class Observation(models.Model):
 

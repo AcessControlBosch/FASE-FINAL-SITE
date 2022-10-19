@@ -103,6 +103,22 @@ class AssociateAPI(APIView):
         return Response({"msg": "Apagado com sucesso"})
 
 #------------------------------------------------------------
+#----------------------------Associate Job Name-----------------------
+#------------------------------------------------------------
+class GetAssociateAPI(APIView):
+    def get(self, request, pk=""):
+        if pk == '':
+            associate = Associate.objects.all()
+            serializer = GetAssociateTable(associate, many=True)
+            return Response(serializer.data)
+
+        else:
+            associate = Associate.objects.get(id_card=pk)
+            serializer = GetAssociateTable(associate)
+            return Response(serializer.data)
+
+
+#------------------------------------------------------------
 #----------------------------Machine-------------------------
 #------------------------------------------------------------
 class MachineAPI(APIView):
@@ -139,6 +155,25 @@ class MachineAPI(APIView):
         machineResult = Machine.objects.get(id=pk)       
         machineResult.delete()
         return Response({"msg": "Apagado com sucesso"})
+
+
+#------------------------------------------------------------
+#----------------------- GET Machine-------------------------
+#------------------------------------------------------------
+class GetMachineAPI(APIView):
+
+    def get(self, request, pk=''):
+
+        if pk == '':
+            machineResult = Machine.objects.all()
+            serializer = GetMachineTable(machineResult, many=True)
+            return Response(serializer.data)
+
+        else:
+            machineResult = Machine.objects.get(id=pk)
+            serializer = GetMachineTable(machineResult)
+            return Response(serializer.data)
+
 
 #------------------------------------------------------------
 #----------------------------Question------------------------

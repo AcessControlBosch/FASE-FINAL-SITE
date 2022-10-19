@@ -83,7 +83,7 @@ export default {
 
     created(){
 
-        this.path = this.$store.state.BASE_URL + '/greenbooks/' + this.$store.state.idmachine + '/2';
+        this.path = this.$store.state.BASE_URL + '/greenbooks/' + this.$store.state.idmachine + '/1';
 
         //console.log(this.path);
          
@@ -183,6 +183,9 @@ export default {
                     FinishHour: hourFinish,
                     idMachineFK: this.$store.state.idmachine,
                     idAssociateFK: this.$store.state.usuario.id,
+                    examA: "A",
+                    examB: "B",
+                    result: "OK"
                 }]
 
                 let bodyMachine = {
@@ -190,7 +193,7 @@ export default {
                     description: this.$store.state.machine.description,
                     status: true,
                     ipaddress: this.$store.state.machine.ipaddress,
-                    statusMaint: this.$store.state.machine.statusMaint
+                    statusMaint: this.$store.state.machine.statusMaint,
                 }
                 
                 console.log(bodyRealised)

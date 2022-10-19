@@ -1,12 +1,20 @@
 from rest_framework import serializers
 from .models import *
 
-class JobPositionTable(serializers.ModelSerializer):
+class JobPositionTableAll(serializers.ModelSerializer):
 
     class Meta: 
         many = True
         model = JobPosition
         fields = '__all__'
+
+class JobPositionTable(serializers.ModelSerializer):
+
+    class Meta: 
+        many = True
+        model = JobPosition
+        fields = ['typeJob']
+
 
 class AssociateTable(serializers.ModelSerializer):
 
@@ -23,6 +31,13 @@ class GetAssociateTable(serializers.ModelSerializer):
         many = True
         model = Associate
         fields = '__all__'
+
+class GetAssociateTableName(serializers.ModelSerializer):
+
+    class Meta:
+        many = True
+        model = Associate
+        fields = ['name', 'EDV'] 
 
 class AssociateTableID(serializers.ModelSerializer):
 
@@ -45,6 +60,12 @@ class MachineTable(serializers.ModelSerializer):
         model = Machine
         fields = '__all__'
 
+class GetMachineTable(serializers.ModelSerializer):
+
+    class Meta:
+        many = True
+        model = Machine
+        fields = ['name']
 
 class QuestionTable(serializers.ModelSerializer):
 
@@ -119,37 +140,3 @@ class LoginTable(serializers.ModelSerializer):
         many = True
         model = Login
         fields = '__all__'
-
-# class ApprenticeTable(serializers.ModelSerializer):
-#
-#     idApprenticeFK = UserTable(read_only=True)
-#     course = CoursesNameTable(read_only=True)
-#
-#     class Meta:
-#         many = True
-#         model = Apprentice
-#         fields = '__all__'
-#
-# class ApprenticeTableNumber(serializers.ModelSerializer):
-#
-#     class Meta:
-#         many = True
-#         model = Apprentice
-#         fields = '__all__'
-
-# class typeAssocienteTable(serializers.ModelSerializer):
-#
-#     class Meta:
-#         many = True
-#         model = typeAssociente
-#         fields = ['type']
-
-# class AssociateTable(serializers.ModelSerializer):
-#
-#     idAssociateFK = UserTable(read_only=True)
-#     type = typeAssocienteTable(read_only=True)
-#
-#     class Meta:
-#         many = True
-#         model = Associate
-#         fields = '__all__'

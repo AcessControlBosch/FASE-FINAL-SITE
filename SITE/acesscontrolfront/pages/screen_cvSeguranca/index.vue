@@ -78,7 +78,7 @@ export default {
 
         //console.log(this.$store.state.idmachine);
 
-        this.path = this.$store.state.BASE_URL + '/greenbooks/' + this.$store.state.idmachine + '/1'
+        this.path = this.$store.state.BASE_URL + '/greenbooks/' + this.$store.state.idmachine + '/2'
 
         console.log(this.path);
 

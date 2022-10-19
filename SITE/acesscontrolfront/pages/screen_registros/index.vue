@@ -25,6 +25,8 @@
                             <th class="th-register"><p class="title-table">Hour Initial</p></th>
                             <th class="th-register"><p class="title-table">Hour Finish</p></th>
                             <th class="th-register"><p class="title-table">Type</p></th>
+                            <th class="th-register"><p class="title-table">Exams</p></th>
+                            <th class="th-register"><p class="title-table">Result</p></th>
 
                         </tr>
 
@@ -34,6 +36,8 @@
                            <td class="td-register"><p class="text-table text-align-center">{{register.InitialHour}}</p></td>
                            <td class="td-register"><p class="text-table text-align-center">{{register.FinishHour}}</p></td>  
                            <td class="td-register"><p class="text-table text-align-center">{{register.idAssociateFK.jobposition.typeJob}}</p></td>  
+                           <td class="td-register"><p class="text-table text-align-center">{{register.examA}} , {{register.examB}}</p></td> 
+                           <td class="td-register"><p class="text-table text-align-center">{{register.result}}</p></td>
                         </tr>
 
                     </table>
@@ -58,6 +62,8 @@ export default{
     created() {
 
         this.$axios.get(this.$store.state.BASE_URL + "/getreleasemachines/").then((response) => {
+
+            console.log(response)
 
             this.responseRegisters = response.data;
 

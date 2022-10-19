@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import *
 
 class detReleaseMachine(admin.ModelAdmin):
-    list_display = ('id', 'date', 'InitialHour', 'FinishHour', 'idMachineFK','idAssociateFK')
+    list_display = ('id', 'date', 'InitialHour', 'FinishHour', 'idMachineFK','idAssociateFK', 'examA', 'examB', 'result')
     list_display_links = ('id',)
     search_fields = ('idMachineFK','idAssociateFK',)
     list_per_page = 10

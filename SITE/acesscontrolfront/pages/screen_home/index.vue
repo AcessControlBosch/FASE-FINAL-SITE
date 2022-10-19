@@ -22,6 +22,13 @@
                     <i class="pi pi-list" id="pi-reg"><i class="pi pi-pencil" id="pi-list"></i></i>
                 </button>
             </div>
+
+            <div class="button-content">
+                <button class="button-function" v-on:click="$router.push('/screen_qrCode')">
+                    <p class="tipo">Ler QrCode Novamente</p>
+                    <i class="pi pi-camera" id="pi-cam"></i>
+                </button>
+            </div>
     
             </div>
         
