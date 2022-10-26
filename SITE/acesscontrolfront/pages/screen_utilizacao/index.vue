@@ -50,7 +50,16 @@ export default {
     
     } else {
 
-      console.log("Tem a permissão")
+      if(this.$store.state.usuario.adminU === true){
+
+        console.log("Usuário é um admin")
+        this.$router.push("/screen_redirectAdmin")
+
+      } else if(this.$store.state.usuario.adminU === false){
+
+        console.log("Usuário tem a permissão")
+
+      }
 
     }
 
@@ -60,8 +69,7 @@ export default {
 
     return{
 
-     responseData: [],
-     id: 0
+     responseData: []
 
     }
 
