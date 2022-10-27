@@ -39,8 +39,9 @@ export default {
 
       this.dataMachines = response.data;
       console.log(response.data);
+      
+      this.calculatedData();
 
-      this.calculateData();
 
     }).catch((error) => {
 
@@ -48,44 +49,64 @@ export default {
 
     })
 
-
   },
 
   methods: {
 
-    calculateData: function() {
+    calculatedData: function(){
 
-      //VARIAVEIS DE UTILIZAÇÃO
       let increment = 0;
-      let incrementMachines = 0;
-      let verifyFindMachines = false;
-      let existsMachines = [];
+      let iMachines = 0;
+      var machines = [];
+      var lineQuantidade = [["Maquinas", "Quantidade"]];
 
-      //QUANTIDADE DE MÁQUINAS CADASTRADAS
-      existsMachines.push(this.dataMachines[0].idMachineFK.name)
+      const date =  new Date();
 
-      for(increment; increment < this.dataMachines.length; increment){
+      //---------------------------------------------------------------------------------------
+      //---------------------------------------------------------------------------------------
+      //-----------------------------------Maquinas Utilizadas---------------------------------
+      //---------------------------------------------------------------------------------------
+      //---------------------------------------------------------------------------------------
+      machines.push(this.dataMachines[0].idMachineFK.name);
 
-        // for(incrementMachines; incrementMachines < existsMachines.length; incrementMachines){
+      for(increment; increment < this.dataMachines.length; increment++){
 
-        //   if(this.dataMachines[increment].idMachineFK.name === existsMachines[incrementMachines]){
+        let verify = false;
 
-        //     break;
+        for(iMachines; iMachines < machines.length; iMachines++){
 
-        //   } else {
+          if(machines[iMachines] === this.dataMachines[increment].idMachineFK.name){
 
-        //     existsMachines.push(this.dataMachines[increment].idMachineFK.name)
-        //     break;
+            verify = true;
+            break
 
-        //   }
+          } 
 
-        // }
+        }
+
+        if(verify === false){
+
+          machines.push(this.dataMachines[increment].idMachineFK.name)
+
+        }
 
       }
 
-      console.log(existsMachines)
+      increment = 0
+      iMachines = 0;
 
-    }
+      //---------------------------------------------------------------------------------------
+      //---------------------------------------------------------------------------------------
+      //-----------------------------------Quantidade de liberações----------------------------
+      //---------------------------------------------------------------------------------------
+      //---------------------------------------------------------------------------------------
+      for(increment; increment < this.dataMachines.length; increment++){ 
+
+      
+      }
+    
+      
+    },
 
   }
 
