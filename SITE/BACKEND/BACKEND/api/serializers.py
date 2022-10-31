@@ -15,7 +15,6 @@ class JobPositionTable(serializers.ModelSerializer):
         model = JobPosition
         fields = ['typeJob']
 
-
 class AssociateTable(serializers.ModelSerializer):
 
     class Meta: 

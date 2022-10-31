@@ -1,8 +1,7 @@
 export default {
-  ssr: false,
 
   head: {
-    title: 'dashboard',
+    title: 'DASHBOARD',
     htmlAttrs: {
       lang: 'en'
     },
@@ -19,8 +18,8 @@ export default {
 
   css: [
       '@/layouts/global.scss',
-      'primeflex/primeflex.css', 
-      '@/layouts/reset.scss', 
+      'primeflex/primeflex.css',
+      '@/layouts/Reset.scss'
   ],
 
   plugins: [

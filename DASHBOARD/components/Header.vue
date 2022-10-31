@@ -4,12 +4,6 @@
 
         <div class="supergrafico"></div>
 
-        <div class="row">
-
-            <img src="../static/logo.svg" />
-
-        </div>
-
     </div>
 
 </template>

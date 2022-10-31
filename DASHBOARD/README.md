@@ -1,4 +1,4 @@
-# dashboard
+# DASHBOARD
 
 ## Build Setup
 
