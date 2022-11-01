@@ -48,10 +48,9 @@
 
                 .line-inital-data{
                     width: 98%;
-                    height: auto;
-                    margin-top: 10px;
-                    //background-color: red;
+                    height: 20vh;
                     display: flex;
+                    align-items: center;
                     justify-content: space-between;
 
                     .green{
@@ -71,21 +70,23 @@
                     }
 
                     .card{
-                        width: 23vh;
+                        width: 28vh;
                         height: 15vh;
                         //background-color: blue;
+                        border-radius: 3px;
+                        box-shadow: 5px 5px 3px var(--gray);
 
                         .card-title{
                             width: 100%;
                             height: 30%;
-                            //background-color: aqua;
+                            text-align: center  ;
                             display: flex;
                             align-items: center;
                             justify-content: center;
 
                             .title{
                                 font-family: 'Bosch_Sans_Regular';
-                                font-size: 14px;
+                                font-size: 12px;
                             }
 
                         }
@@ -106,6 +107,54 @@
 
                     
                     }
+
+                }
+
+                .content-grapichs{
+                    width: 98%;
+                    height: 74vh;
+                    //background-color: orange;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+
+                    .card-grapich{
+                        width: 48%;
+                        height: 34vh;
+                        background-color: var(--gray);
+                        
+                        .card-grapich-content-title{
+                            width: 100%;
+                            height: 20%;
+                            background-color: #D0D4D8;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .card-grapich-title-text{
+                                font-family: 'Bosch_Sans_Bold';
+                            }
+
+                        }
+
+                        .container-grapich{
+                            width: 100%;
+                            height: 80%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            //background-color: purple;
+
+                            .p-chart{
+                                width: 100%;
+                                height: 60%;
+                                background-color: orange;   
+                            }
+                        }
+
+
+                    }
+
 
                 }
 

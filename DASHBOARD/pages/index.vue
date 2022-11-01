@@ -63,6 +63,60 @@
 
           </div>
 
+          <div class="content-grapichs">
+
+            <div class="card-grapich">
+
+                <div class="card-grapich-content-title">
+                    <p class="card-grapich-title-text">Utilização por classe</p>
+                </div>
+
+                <div class="container-grapich">
+
+                  <Chart type="pie" :data="pieChartReleases"/>
+
+                </div>
+
+            </div>
+
+            <div class="card-grapich">
+
+                <div class="card-grapich-content-title">
+                    <p class="card-grapich-title-text">Vamo ver o que sai daqui</p>
+                </div>
+
+                <div class="container-grapich">
+
+                </div>
+
+            </div>
+
+            <div class="card-grapich">
+
+                <div class="card-grapich-content-title">
+                    <p class="card-grapich-title-text">Vamo ver o que sai daqui</p>
+                </div>
+
+                <div class="container-grapich">
+
+                </div>
+
+            </div>
+
+            <div class="card-grapich">
+
+                <div class="card-grapich-content-title">
+                    <p class="card-grapich-title-text">Vamo ver o que sai daqui</p>
+                </div>
+
+                <div class="container-grapich">
+
+                </div>
+
+            </div>
+
+          </div>
+
           
 
         </div>
@@ -99,7 +153,6 @@ export default {
       //Dados para análise das máquinas
       dataMachines: [],
       machines: [],
-      liberacoes: [],
       manuntecoes: [],
 
       //Dados para a página
@@ -109,9 +162,10 @@ export default {
       month: '',
       year: '',
       
-      //Dados para criação dos graficos
-      lineDataLiberacoes: [],
-
+      //PIECHART -  Utilização por classe
+      pieChartReleases: [],
+      class: [],
+      classQuant: [],
       
 		}
 
@@ -122,7 +176,6 @@ export default {
     this.$axios.get(this.$store.state.BASE_URL + "/getreleasemachines/").then((response) => {
       
       this.dataMachines = response.data;
-      console.log(this.dataMachines)
 
       this.calculateData();
 
@@ -149,98 +202,79 @@ export default {
     calculateData: function() {
 
       const date = new Date();
+      let increment = 0;
+      let verify = false;
 
       this.date = date.getDate();
       this.month = date.getMonth() + 1;
       this.year =  date.getFullYear();
-      
-      //------------------------------------------------
-      //Definição da máquinas que estão sendo utilizadas
-      //------------------------------------------------
-      let increment = 0;
-      let iMachines = 0;
-      let verify = false;
 
-      this.machines.push(this.dataMachines[0].idMachineFK.name)
+      //--------------------------------------------------
+      //PIECHART - Utilização por classe
+      //--------------------------------------------------
+      let iClasses = 0;
+
+      this.class.push(this.dataMachines[0].idAssociateFK.jobposition.typeJob)
 
       for(increment; increment < this.dataMachines.length; increment++){
 
         verify = false;
 
-        for(iMachines; iMachines < this.machines.length; iMachines++){
+        for(iClasses; iClasses < this.class.length; iClasses++){
 
-          if(this.machines[iMachines] === this.dataMachines[increment].idMachineFK.name){
-
+          if(this.class[iClasses] === this.dataMachines[increment].idAssociateFK.jobposition.typeJob){
             verify = true;
             break;
-
           }
 
         }
 
         if(verify === false){
-
-          this.machines.push(this.dataMachines[increment].idMachineFK.name)
-
+          this.class.push(this.dataMachines[increment].idAssociateFK.jobposition.typeJob)
         }
 
-        iMachines = 0
+        iClasses = 0
 
       }
 
-      //--------------------------------------------------
-      //Quantidade de vezes em que a máquina foi utilizada
-      //--------------------------------------------------
+      //Quantas vezes foi utilizada por classe
       let count = 0;
-
       increment = 0;
-      iMachines = 0;
+      iClasses = 0;
 
-      for(iMachines; iMachines < this.machines.length; iMachines++){
+      for(iClasses; iClasses < this.class.length; iClasses++){
 
         increment = 0;
 
         for(increment; increment < this.dataMachines.length; increment++){
 
-          if(this.machines[iMachines] === this.dataMachines[increment].idMachineFK.name){
-
+          if(this.class[iClasses] === this.dataMachines[increment].idAssociateFK.jobposition.typeJob){
             count = count + 1;
-
           }
           
         }
 
-        this.liberacoes.push(count)
+        this.classQuant.push(count)
         count = 0
     
       }
 
-      console.log(this.machines)
-      console.log(this.liberacoes)
+      //Configuração de dados para o PIECHART
+      let dataSetClass = []
 
-      increment = 0;
-      let dataSetLiberacao = []
+
       
-      for(increment; increment < this.machines.length; increment++){
+      let datasetmachines = ['Liberações por classe']
 
-        dataSetLiberacao.push(
-          {
-            label: this.machines[increment],
-            backgroundColor: this.$store.state.cores[increment],
-            data: [this.liberacoes[increment]]
-          }
-
-        )
-        
+      this.pieChartReleases = {
+        labels: this.class,
+        datasets: [{
+          data: this.classQuant,
+          backgroundColor: this.$store.state.cores,
+        }]
       }
 
-      let datasetmachines = ['Liberações por máquinas']
-
-      this.lineDataLiberacoes = {
-        labels: datasetmachines,
-        datasets: dataSetLiberacao
-      }
-  
+      
     }
 
   }

@@ -41,5 +41,13 @@ export default {
 
   build: {
     transpile: ['primevue'],
+  },
+
+  primevue:{
+    theme: "saga-blue",
+    ripple: true,
+    components:[
+      
+    ],
   }
 }
