@@ -118,43 +118,89 @@
                     flex-wrap: wrap;
                     justify-content: space-between;
 
-                    .card-grapich{
-                        width: 48%;
-                        height: 34vh;
-                        background-color: var(--gray);
-                        
-                        .card-grapich-content-title{
-                            width: 100%;
-                            height: 20%;
-                            background-color: #D0D4D8;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
+                    .left-grapichs{
+                        width: 50%;
+                        height: 100%;
+                        //background-color: red;
 
-                            .card-grapich-title-text{
-                                font-family: 'Bosch_Sans_Bold';
-                            }
+                        .card-grapich{
+                            width: 98%;
+                            height: 100%;
+                            background-color: var(--gray);
 
-                        }
-
-                        .container-grapich{
-                            width: 100%;
-                            height: 80%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            //background-color: purple;
-
-                            .p-chart{
+                            .card-grapich-content-title{
                                 width: 100%;
-                                height: 60%;
-                                background-color: orange;   
+                                height: 10%;
+                                background-color: #D0D4D8;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+    
+                                .card-grapich-title-text{
+                                    font-family: 'Bosch_Sans_Bold';
+                                }
+    
                             }
-                        }
 
+                            .container-grapich{
+                                width: 100%;
+                                height: 80%;
+                                display: flex;
+                                justify-content: center;
+    
+                                .p-chart{
+                                    width: 80%;
+                                    height: 60%; 
+                                }
+
+                            }
+                            
+                        }
 
                     }
 
+                    .right-grapichs{
+                        width: 50%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-direction: column;
+
+                        .card-grapich{
+                            width: 98%;
+                            height: 48%;
+                            background-color: var(--gray);
+
+                            .card-grapich-content-title{
+                                width: 100%;
+                                height: 10%;
+                                background-color: #D0D4D8;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+    
+                                .card-grapich-title-text{
+                                    font-family: 'Bosch_Sans_Bold';
+                                }
+    
+                            }
+
+                            .container-grapich{
+                                width: 100%;
+                                height: 80%;
+                                display: flex;
+                                justify-content: center;
+    
+                                .p-chart{
+                                    width: 80%;
+                                    height: 60%; 
+                                }
+
+                            }
+                            
+                        }
+
+                    }
 
                 }
 

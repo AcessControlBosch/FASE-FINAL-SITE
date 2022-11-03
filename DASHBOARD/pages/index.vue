@@ -65,7 +65,9 @@
 
           <div class="content-grapichs">
 
-            <div class="card-grapich">
+            <div class="left-grapichs">
+
+              <div class="card-grapich">
 
                 <div class="card-grapich-content-title">
                     <p class="card-grapich-title-text">Utilização por classe</p>
@@ -77,9 +79,27 @@
 
                 </div>
 
+              </div>
+
             </div>
 
-            <div class="card-grapich">
+            <div class="right-grapichs">
+            
+              <div class="card-grapich">
+
+                <div class="card-grapich-content-title">
+                    <p class="card-grapich-title-text">Máquinas mais utilizadas no mes n° {{this.month}}</p>
+                </div>
+
+                <div class="container-grapich">
+
+                    <Chart type="bar" :data="barChartMonth" />
+
+                </div>
+
+              </div>
+
+              <div class="card-grapich">
 
                 <div class="card-grapich-content-title">
                     <p class="card-grapich-title-text">Vamo ver o que sai daqui</p>
@@ -89,31 +109,15 @@
 
                 </div>
 
-            </div>
+              </div>
 
-            <div class="card-grapich">
-
-                <div class="card-grapich-content-title">
-                    <p class="card-grapich-title-text">Vamo ver o que sai daqui</p>
-                </div>
-
-                <div class="container-grapich">
-
-                </div>
+              
 
             </div>
 
-            <div class="card-grapich">
-
-                <div class="card-grapich-content-title">
-                    <p class="card-grapich-title-text">Vamo ver o que sai daqui</p>
-                </div>
-
-                <div class="container-grapich">
-
-                </div>
-
+            
             </div>
+
 
           </div>
 
@@ -166,6 +170,10 @@ export default {
       pieChartReleases: [],
       class: [],
       classQuant: [],
+
+      //BARCHART - Utilização por mês
+      barChartMonth: [],
+      releaseMonth: []
       
 		}
 
@@ -262,8 +270,6 @@ export default {
       //Configuração de dados para o PIECHART
       let dataSetClass = []
 
-
-      
       let datasetmachines = ['Liberações por classe']
 
       this.pieChartReleases = {
@@ -274,12 +280,92 @@ export default {
         }]
       }
 
+      //--------------------------------------------------
+      //BARCHART - Utilização por mês
+      //--------------------------------------------------
+      increment = 0;
+      verify = false;
+      let iMachines = 0;
+
+      this.machines.push(this.dataMachines[0].idMachineFK.name)
+
+      for(increment; increment < this.dataMachines.length; increment++){
+
+        verify = false;
+
+        for(iMachines; iMachines < this.machines.length; iMachines++){
+
+          if(this.machines[iMachines] === this.dataMachines[increment].idMachineFK.name){
+            verify = true;
+            break;
+          }
+
+        }
+
+        if(verify === false){
+          this.machines.push(this.dataMachines[increment].idMachineFK.name)
+        }
+
+        iMachines = 0
+
+      }
+
+      //Definição pelo mês atual
+      increment = 0;
+      iMachines = 0;
+      count = 0;
+      let releaseMonth = []
+
+      for(iMachines; iMachines < this.machines.length; iMachines++){
+
+        increment = 0;
+
+        for(increment; increment < this.dataMachines.length; increment++){
+
+          let data = this.dataMachines[increment].date.split("-")
+
+          if(this.machines[iMachines] === this.dataMachines[increment].idMachineFK.name){
+
+            if(data[1] === this.month.toString()){
+              count = count + 1;
+            }
+
+          }
+          
+        }
+
+        this.releaseMonth.push(count)
+        count = 0
+    
+      }
       
+      //PReparação dos dados para serem redenizados
+      increment = 0;
+      let dataSetMonth = []
+      
+      for(increment; increment < this.machines.length; increment++){
+
+        dataSetMonth.push(
+          {
+            label: this.machines[increment],
+            backgroundColor: this.$store.state.cores[increment],
+            data: [this.releaseMonth[increment]]
+          }
+
+        )
+        
+      }
+
+      let datasetmonthlabel = ['']
+
+      this.barChartMonth = {
+        labels: datasetmonthlabel,
+        datasets: dataSetMonth
+      }
+
     }
 
   }
-
-
 
 }
 </script>

@@ -3,12 +3,13 @@ export const state = () => ({
     BASE_URL: "http://localhost:8000",
 
     cores: [
-        "#E48CDD",
-        "#56B0FF",
-        "#66B8B2",
-        "#5EBD82",
-        "#FF8787",
-
+       //Cores primários - fortes
+       "#FF2124", //red
+       "#001222", //blue
+       "#FFCF00", //yellow"
+       "#219557", //green
+       
+        
     ]
 
 
