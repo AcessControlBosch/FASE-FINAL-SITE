@@ -13,6 +13,75 @@
             width: 20%;
             height: 100%;
             background-color: var(--gray);
+
+            .logo-container{
+                width: 100%;
+                height: 15vh;
+                //background-color: red;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .menu-container{
+                display: flex;
+                flex-direction: column;
+
+                .btn-machine{
+                    margin-left: 10px;
+                    margin-bottom: 20px;
+                    width: 60%;
+                    border: none;
+                    display: flex;
+                    background-color: var(--gray);
+                    cursor: pointer;
+
+                    .text-machine-item{
+                        font-family: 'Bosch_Sans_Bold';
+                        font-size: 16px;
+                    }
+
+                    &:hover{
+                        color: var(--LightBlue)
+                    }
+                }
+
+                .btn-machine-title{
+                    margin-left: 10px;
+                    margin-bottom: 20px;
+                    width: 60%;
+                    border: none;
+                    display: flex;
+                    background-color: var(--gray);
+
+                    .text-machine-item{
+                        font-family: 'Bosch_Sans_Bold';
+                        font-size: 16px;
+                    }
+                }
+
+                .btn-machine-item{
+                    margin-left: 20px;
+                    margin-bottom: 10px;
+                    cursor: pointer;
+                    width: 60%;
+                    border: none;
+                    display: flex;
+                    background-color: var(--gray);
+
+                    &:hover{
+                        color: var(--LightBlue)
+                    }
+                }
+
+                .btn-machine-item-title{
+                    margin-left: 20px;
+                    margin-bottom: 20px;
+                    cursor: pointer;
+                }
+
+            }
+
         }
 
         .view_data{
@@ -201,6 +270,97 @@
                         }
 
                     }
+
+                }
+
+            }
+
+            .only-machines{
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                overflow: auto;
+
+                .title-machine-name{
+                    width: 100%;
+                    height: 10vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    //background-color: yellow;
+    
+                    .title-machine-text{
+                        font-size: 20px;
+                        font-family: 'Bosch_Sans_Bold';
+                    }
+    
+                }
+    
+                .grapich{
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    //background-color: red;
+
+                    .p-chart{
+                        width: 98%;
+                    }
+                }
+
+                .size-tables{
+                    width: 100%;
+                    height: 90vh;
+                    display: flex;
+                    justify-content: space-between;
+                    //background-color: #D0D4D8;
+
+                    .size_one{
+                        width: 49%;
+                        height: auto;
+                        display: flex;
+                        background-color: red;
+
+                        .title-table{
+                            width: 100%;
+                            height: 6vh;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: var(--gray);
+
+                            .title-table-text{
+                                font-family: 'Bosch_Sans_Bold';
+                            }
+
+                        }
+
+
+                    }
+
+                    .size_two{
+                        width: 49%;
+                        height: auto;
+                        display: flex;
+                        background-color: blue;
+
+                        .title-table{
+                            width: 100%;
+                            height: 6vh;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: var(--gray);
+
+                            .title-table-text{
+                                font-family: 'Bosch_Sans_Bold';
+                            }
+
+                        }
+                    }
+
 
                 }
 
