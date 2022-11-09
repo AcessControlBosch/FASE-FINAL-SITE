@@ -141,13 +141,9 @@
 
               </div>
 
-              
-
             </div>
 
-            
             </div>
-
 
           </div>
 
@@ -171,25 +167,64 @@
 
             </div>
 
-            <div class="size-tables">
+            <div class="line-card-tables">
 
-              <div class="size_one">
+              <div class="table_one">
 
-                <div class="title-table">
-                  <p class="title-table-text">Quantidade de manutenções por mês</p>
+                <div class="table-title">
+                  <p class="table-title-text">Manutenções por mês</p>
                 </div>
+
+                <div class="table-body">
+
+                  <div class="header-table">
+
+                    <div class="item-qtd">Mês</div>
+                    <div class="item-qtd">Quantidade</div>
+
+                  </div>
+
+                  <div class="header-table" v-for="(data, id) in dataTableManutencao" :key="id">
+
+                    <div class="item-qtd">{{data.mes}}</div>
+                    <div class="item-qtd">{{data.valor}}</div>
+
+                  </div>
+
+                </div>
+
               
               </div>
 
-              <div class="size_two">
+              <div class="table_one">
 
-                <div class="title-table">
-                  <p class="title-table-text">Quantidade de liberações por mês</p>
+                <div class="table-title">
+                  <p class="table-title-text">Liberações por mês</p>
                 </div>
+
+                <div class="table-body">
+
+                  <div class="header-table">
+
+                    <div class="item-qtd">Mês</div>
+                    <div class="item-qtd">Quantidade</div>
+
+                  </div>
+
+                  <div class="header-table" v-for="(data, id) in dataTableUtilizacao" :key="id">
+
+                    <div class="item-qtd">{{data.mes}}</div>
+                    <div class="item-qtd">{{data.valor}}</div>
+
+                  </div>
+
+                </div>
+
               
               </div>
             
             </div>
+            
           
           </div>
         
@@ -197,8 +232,6 @@
 
         </div>
 
-        
-      
       </div>
 
     </div>
@@ -242,6 +275,7 @@ export default {
       year: '',
       qtdManutencao: '',
       nameMachine: '',
+      labelMonth: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
       
       //PIECHART -  Utilização por classe
       pieChartReleases: [],
@@ -260,6 +294,10 @@ export default {
 
       //BARCHART - Utilização em horas por mês
       lineHourPerMonth: [],
+
+      //Dados por máquina
+      dataTableManutencao: [],
+      dataTableUtilizacao: [],
       
 		}
 
@@ -279,7 +317,7 @@ export default {
 
     }),
 
-    this.$axios.get(this.$store.state.BASE_URL + "/observations/").then((response) => {
+    this.$axios.get(this.$store.state.BASE_URL + "/getobservations/").then((response) => {
       
       this.manuntecoes = response.data;
 
@@ -547,7 +585,6 @@ export default {
 
       }
 
-      let labelMonth = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
       let dataSetMonth = [];
       increment = 0;
 
@@ -555,7 +592,7 @@ export default {
 
         dataSetMonth.push(
           {
-            label: labelMonth[increment],
+            label: this.labelMonth[increment],
             backgroundColor: this.$store.state.coresIniciais[increment],
             data: [monthTime[increment]]
           }
@@ -571,26 +608,113 @@ export default {
       }
 
       //--------------------------------------------------
-      //QUANTIDADE DE MANUTENÇÕES
+      //QUANTIDADE DE MANUTENÇÕES POR MÊS
       //--------------------------------------------------
-      month = 0;
-      increment = 0
+      increment = 0;
+      month = 0
+      let incrementMaintence = 0
+      let count = 0
 
-      let qtdMaintence = [0,0,0,0,0,0,0,0,0,0,0,0];
+      let qtdMaintence = [0,0,0,0,0,0,0,0,0,0,0,0]
 
-      for(increment; increment < 12; increment++){
+      for(increment; increment < this.machines.length; increment++){
 
-        for(month; month < this.observations.length; month++){
+        if(this.machines[increment] === nameMachine){
 
-          
+          for(month; month < this.labelMonth.length; month++){
+
+            for(incrementMaintence; incrementMaintence < this.manuntecoes.length; incrementMaintence++){
+
+              if(this.manuntecoes[incrementMaintence].idMachineFK.name === nameMachine){
+
+                let data = this.manuntecoes[incrementMaintence].date.split("-").map(e => parseInt(e))
+                
+                if(data[1] === month){
+                  count = count + 1
+                }
+
+              }
+
+            }
+
+            incrementMaintence = 0
+            qtdMaintence[month] = qtdMaintence[month] + count
+            count = 0
+
+          }
+
+          break
+
+        }
+
+      }
+
+      //--------------------------------------------------
+      //QUANTIDADE DE LIBERAÇÕES POR MÊS
+      //--------------------------------------------------
+      increment = 0;
+      month = 0
+      let incrementUtilizar = 0
+      count = 0
+
+      let qtdUtilizacao = [0,0,0,0,0,0,0,0,0,0,0,0]
+
+      for(increment; increment < this.machines.length; increment++){
+
+        if(this.machines[increment] === nameMachine){
+
+          for(month; month < this.labelMonth.length; month++){
+
+            for(incrementUtilizar; incrementUtilizar < this.dataMachines.length; incrementUtilizar++){
+
+              if(this.dataMachines[incrementUtilizar].idMachineFK.name === nameMachine){
+
+                let data = this.dataMachines[incrementUtilizar].date.split("-").map(e => parseInt(e))
+                
+                if(data[1] === month){
+                  count = count + 1
+                }
+
+              }
+
+            }
+
+            incrementUtilizar = 0
+            qtdUtilizacao[month] = qtdUtilizacao[month] + count
+            count = 0
+
+          }
 
         }
 
         
+
       }
 
-      
+      this.dataTableManutencao = []
+      this.dataTableUtilizacao = []
 
+      //Montar dados para tabelas
+      increment = 0;
+
+      for(increment; increment < 12; increment++){
+
+
+        this.dataTableManutencao.push({
+          id: increment + 1,
+          mes: this.labelMonth[increment],
+          valor: qtdMaintence[increment]
+        })
+
+        this.dataTableUtilizacao.push({
+          id: increment + 1,
+          mes: this.labelMonth[increment],
+          valor: qtdUtilizacao[increment]
+        })
+
+        console.log(this.dataTableManutencao)
+
+      }
 
     },
 
