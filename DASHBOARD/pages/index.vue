@@ -24,10 +24,10 @@
             <p class="text-machine-item">Máquinas</p>
           </button>
           
-          <div v-for="(machine, id) in machines" :key="id">
+          <div v-for="(machine, id) in qtdMachines" :key="id">
 
-            <button class="btn-machine-item" v-on:click="mudation(machine)">
-              <p class="text-machine-item">{{machine}}</p>
+            <button class="btn-machine-item" v-on:click="mudation(machine.name)">
+              <p class="text-machine-item">{{machine.name}}</p>
             </button>
                         
           </div>
@@ -98,7 +98,7 @@
               <div class="card-grapich">
 
                 <div class="card-grapich-content-title">
-                    <p class="card-grapich-title-text">Utilização por classe</p>
+                    <p class="card-grapich-title-text">Liberações por classe</p>
                 </div>
 
                 <div class="container-grapich">
@@ -151,7 +151,57 @@
 
             <div class="title-machine-name">
 
-              <p class="title-machine-text">Tempo de utilização da máquina por mês</p>
+              <p class="title-machine-text">Visão geral</p>
+
+            </div>
+
+            <div class="line-inital-data">
+
+            <div class="card green">
+              <div class="card-title">
+                <p class="title">Liberações totais realizadas</p>
+              </div>
+
+              <div class="card-body">
+                <p class="text-body">{{this.releaseMount}}</p>
+              </div>
+            </div>
+
+            <div class="card blue">
+              <div class="card-title">
+                <p class="title">Liberações no mês n° {{this.month}}</p>
+              </div>
+
+              <div class="card-body">
+                <p class="text-body">{{this.releasePerMount}}</p>
+              </div>
+            </div>
+
+            <div class="card yellow">
+              <div class="card-title">
+                <p class="title">Quantidade de observações</p>
+              </div>
+
+              <div class="card-body">
+                <p class="text-body">{{this.observationsMachine}}</p>
+              </div>
+            </div>
+
+            <div class="card red">
+              <div class="card-title">
+                <p class="title">Quantidade de manutenções</p>
+              </div>
+
+              <div class="card-body">
+                <p class="text-body">{{this.qtdManutencao}}</p>
+              </div>
+            </div>
+
+          </div>
+
+            <div class="title-machine-name">
+
+              <p class="title-machine-text">Tempo de utilização da máquina por mês em horas</p>
 
             </div>
 
@@ -163,7 +213,7 @@
 
             <div class="title-machine-name">
 
-              <p class="title-machine-text">Dados gerais</p>
+              <p class="title-machine-text">Muito dahora esse titulo</p>
 
             </div>
 
@@ -177,17 +227,17 @@
 
                 <div class="table-body">
 
-                  <div class="header-table">
+                  <div class="header-table-title">
 
-                    <div class="item-qtd">Mês</div>
-                    <div class="item-qtd">Quantidade</div>
+                    <div class="item-qtd"><p class="item-qtd-text-title">Mês</p></div>
+                    <div class="item-qtd"><p class="item-qtd-text-title">Quantidade</p></div>
 
                   </div>
 
                   <div class="header-table" v-for="(data, id) in dataTableManutencao" :key="id">
 
-                    <div class="item-qtd">{{data.mes}}</div>
-                    <div class="item-qtd">{{data.valor}}</div>
+                    <div class="item-qtd"><p class="item-qtd-text">{{data.mes}}</p></div>
+                    <div class="item-qtd"><p class="item-qtd-text">{{data.valor}}</p></div>
 
                   </div>
 
@@ -204,17 +254,17 @@
 
                 <div class="table-body">
 
-                  <div class="header-table">
+                  <div class="header-table-title">
 
-                    <div class="item-qtd">Mês</div>
-                    <div class="item-qtd">Quantidade</div>
+                    <div class="item-qtd"><p class="item-qtd-text-title">Mês</p></div>
+                    <div class="item-qtd"><p class="item-qtd-text-title">Quantidade</p></div>
 
                   </div>
 
                   <div class="header-table" v-for="(data, id) in dataTableUtilizacao" :key="id">
 
-                    <div class="item-qtd">{{data.mes}}</div>
-                    <div class="item-qtd">{{data.valor}}</div>
+                    <div class="item-qtd"><p class="item-qtd-text">{{data.mes}}</p></div>
+                    <div class="item-qtd"><p class="item-qtd-text">{{data.valor}}</p></div>
 
                   </div>
 
@@ -298,6 +348,9 @@ export default {
       //Dados por máquina
       dataTableManutencao: [],
       dataTableUtilizacao: [],
+      releaseMount: 0,
+      releasePerMount: 0,
+      observationsMachine: 0,
       
 		}
 
@@ -431,6 +484,8 @@ export default {
       //--------------------------------------------------
       //BARCHART - Utilização por mês
       //--------------------------------------------------
+
+      //Definição da quanidade de máquinas
       increment = 0;
       verify = false;
       let iMachines = 0;
@@ -560,35 +615,38 @@ export default {
       //--------------------------------------------------
       for(increment; increment < this.dataMachines.length; increment++){
 
-        if(this.dataMachines[increment].idMachineFK.name ===  nameMachine.toString()){
+        if(this.dataMachines[increment].idMachineFK.name === nameMachine){
 
           let data = this.dataMachines[increment].date.split("-").map(e => parseInt(e))
 
-          for(month; month < 13; month++){
+          for(month; month < monthTime.length; month++){
 
-            if(data[1] === month){
+            let iMonth = month + 1
+
+            if(data[1] === iMonth){
 
               let horaInicial = this.dataMachines[increment].InitialHour;
               let horaFinal = this.dataMachines[increment].FinishHour;
 
               let resultado = this.calcularDiferencaHora(horaInicial, horaFinal)
 
-              let mes = monthTime[month]
-
-              monthTime[month] = mes + resultado
+              monthTime[month] = monthTime[month] + resultado
 
             }
 
           }
 
+          month = 0
+
         }
+
 
       }
 
       let dataSetMonth = [];
       increment = 0;
 
-      for(increment; increment < 12; increment++){
+      for(increment; increment < monthTime.length; increment++){
 
         dataSetMonth.push(
           {
@@ -600,13 +658,16 @@ export default {
 
       }
 
+      console.log(dataSetMonth)
+
       let datasetmonthlabel = ['']
 
       this.lineHourPerMonth = {
         labels: datasetmonthlabel,
         datasets: dataSetMonth
       }
-
+      
+      
       //--------------------------------------------------
       //QUANTIDADE DE MANUTENÇÕES POR MÊS
       //--------------------------------------------------
@@ -680,7 +741,7 @@ export default {
             }
 
             incrementUtilizar = 0
-            qtdUtilizacao[month] = qtdUtilizacao[month] + count
+            qtdUtilizacao[month - 1] = qtdUtilizacao[month] + count
             count = 0
 
           }
@@ -701,20 +762,74 @@ export default {
 
 
         this.dataTableManutencao.push({
-          id: increment + 1,
+          id: increment,
           mes: this.labelMonth[increment],
           valor: qtdMaintence[increment]
         })
 
         this.dataTableUtilizacao.push({
-          id: increment + 1,
+          id: increment,
           mes: this.labelMonth[increment],
           valor: qtdUtilizacao[increment]
         })
 
-        console.log(this.dataTableManutencao)
+      }
+
+      //--------------------------------------------------
+      //QUANTIDADE DE LIBERAÇÕES REALIZADAS NO TOTAL
+      //--------------------------------------------------
+      increment = 0
+      count = 0
+      
+      for(increment; increment < this.dataMachines.length; increment++){
+
+        if(this.dataMachines[increment].idMachineFK.name === nameMachine){
+          count = count + 1;
+        }
 
       }
+
+      this.releaseMount = count;
+
+      //--------------------------------------------------
+      //QUANTIDADE DE LIBERAÇÕES REALIZADAS NO TOTAL NO MÊS ATUAL
+      //--------------------------------------------------
+      increment = 0
+      count = 0
+      
+      for(increment; increment < this.dataMachines.length; increment++){
+
+        if(this.dataMachines[increment].idMachineFK.name === nameMachine){
+
+          let data = this.dataMachines[increment].date.split("-").map(e => parseInt(e))
+
+          if(data[1] === this.month){
+            count = count + 1;
+          }
+
+        }
+
+      }
+
+      this.releasePerMount = count;
+
+      //--------------------------------------------------
+      //QUANTIDADE DE OBSERVAÇÕES REALIZADAS
+      //--------------------------------------------------
+      increment = 0
+      count = 0
+      
+      for(increment; increment < this.manuntecoes.length; increment++){
+
+        if(this.manuntecoes[increment].idMachineFK.name === nameMachine){
+
+            count = count + 1;
+
+        }
+
+      }
+
+      this.observationsMachine = count;
 
     },
 

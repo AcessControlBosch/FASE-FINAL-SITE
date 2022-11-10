@@ -282,6 +282,71 @@
                 flex-direction: column;
                 overflow: auto;
 
+                .line-inital-data{
+                    width: 100%;
+                    height: 20vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    margin-bottom: 20px;
+                    margin-top:10px;
+
+                    .green{
+                        background-color: var(--green);
+                    }
+
+                    .yellow{
+                        background-color: var(--yellow)
+                    }
+
+                    .blue{
+                        background-color: var(--LightBlue)
+                    }
+
+                    .red{
+                        background-color: var(--red)
+                    }
+
+                    .card{
+                        width: 28vh;
+                        height: 15vh;
+                        //background-color: blue;
+                        border-radius: 3px;
+                        box-shadow: 5px 5px 3px var(--gray);
+
+                        .card-title{
+                            width: 100%;
+                            height: 30%;
+                            text-align: center  ;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .title{
+                                font-family: 'Bosch_Sans_Regular';
+                                font-size: 12px;
+                            }
+
+                        }
+
+                        .card-body{
+                            width: 100%;
+                            height: 70%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .text-body{
+                                font-family: 'Bosch_Sans_Bold';
+                                font-size: 30px;
+                            }
+
+                        }
+
+                    
+                    }
+                }
+
                 .title-machine-name{
                     width: 100%;
                     height: 10vh;
@@ -319,7 +384,7 @@
                     margin-bottom: 50px;
 
                     .table_one{
-                        width: 49%;
+                        width: 48%;
                         height: auto;
                         display: flex;
                         flex-direction: column;
@@ -348,6 +413,8 @@
                                 width: 100%;
                                 display: flex;
                                 flex-direction: row;
+                                margin-top: 2px;
+                                margin-bottom: 2px;
 
                                 .item-qtd{
                                     width: 50%;
@@ -355,6 +422,34 @@
                                     align-items: center;
                                     justify-content: center;
                                     border: 0.25px solid black;
+
+                                    .item-qtd-text{
+                                        font-family: 'Bosch_Sans_Regular';
+                                        margin: 2px;
+                                    }
+                                }
+
+                            }
+
+                            .header-table-title{
+                                width: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                margin-top: 2px;
+                                margin-bottom: 2px;
+                                background-color: var(--gray);
+
+                                .item-qtd{
+                                    width: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border: 0.25px solid black;
+
+                                    .item-qtd-text-title{
+                                        font-family: 'Bosch_Sans_Bold';
+                                        margin: 3px;
+                                    }
                                 }
 
                             }
