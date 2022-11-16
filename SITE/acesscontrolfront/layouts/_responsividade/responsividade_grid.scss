@@ -49,10 +49,26 @@
                 }
 
             }
+
+            .buttons{
+                display: flex;
+                background-color: red;
+
+                .button-content{
+                    width: 95%;
+
+                    .button-function{
+                        width: 100%;
+                    }
+                    
+                } 
+
+            }
         }
 
         .content{
             display: flex;
+            width: 100%;
 
             .row-superior{
 
@@ -66,15 +82,16 @@
 
             .buttons{
                 display: flex;
+                width: 100%;
 
                 .button-content{
-                    width: 95%;
+                    width: 100%;
 
                     .button-function{
-                        width: 70%;
+                        width: 40%;
                     }
-                    
-                } 
+                }
+                
 
             }
 
@@ -179,6 +196,20 @@
                 }
 
             }
+        }
+
+        .buttons{
+            display: flex;
+
+            .button-content{
+                width: 95%;
+
+                .button-function{
+                    width: 100%;
+                }
+                
+            } 
+
         }
     }
 }

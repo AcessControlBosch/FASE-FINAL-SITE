@@ -1,0 +1,471 @@
+.container{
+    display: flex;
+    flex-direction: column;
+
+    .content{
+        width: 100%;
+        height: 99vh;
+        display: flex;
+        //background-color: red;
+        flex-direction: row;
+
+        .options_bar{
+            width: 20%;
+            height: 100%;
+            background-color: var(--gray);
+
+            .logo-container{
+                width: 100%;
+                height: 15vh;
+                //background-color: red;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .menu-container{
+                display: flex;
+                flex-direction: column;
+
+                .btn-machine{
+                    margin-left: 10px;
+                    margin-bottom: 20px;
+                    width: 60%;
+                    border: none;
+                    display: flex;
+                    background-color: var(--gray);
+                    cursor: pointer;
+
+                    .text-machine-item{
+                        font-family: 'Bosch_Sans_Bold';
+                        font-size: 16px;
+                    }
+
+                    &:hover{
+                        color: var(--LightBlue)
+                    }
+                }
+
+                .btn-machine-title{
+                    margin-left: 10px;
+                    margin-bottom: 20px;
+                    width: 60%;
+                    border: none;
+                    display: flex;
+                    background-color: var(--gray);
+
+                    .text-machine-item{
+                        font-family: 'Bosch_Sans_Bold';
+                        font-size: 16px;
+                    }
+                }
+
+                .btn-machine-item{
+                    margin-left: 20px;
+                    margin-bottom: 10px;
+                    cursor: pointer;
+                    width: 60%;
+                    height: auto;
+                    border: none;
+                    display: flex;
+                    background-color: var(--gray);
+
+                    &:hover{
+                        color: var(--LightBlue)
+                    }
+                }
+
+                .btn-machine-item-title{
+                    margin-left: 20px;
+                    margin-bottom: 20px;
+                    cursor: pointer;
+                }
+
+            }
+
+        }
+
+        .view_data{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .row_date{
+                width: 98%;
+                height: 5vh;
+                background-color: var(--gray);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                    
+              p{
+                margin: 10px;
+                font-family: 'Bosch_Sans_Bold';
+              }
+              
+              
+
+            }
+
+            .data_geral{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .line-inital-data{
+                    width: 98%;
+                    height: 20vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .green{
+                        background-color: var(--green);
+                    }
+
+                    .yellow{
+                        background-color: var(--yellow)
+                    }
+
+                    .blue{
+                        background-color: var(--LightBlue)
+                    }
+
+                    .red{
+                        background-color: var(--red)
+                    }
+
+                    .card{
+                        width: 28vh;
+                        height: 15vh;
+                        //background-color: blue;
+                        border-radius: 3px;
+                        box-shadow: 5px 5px 3px var(--gray);
+
+                        .card-title{
+                            width: 100%;
+                            height: 30%;
+                            text-align: center  ;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .title{
+                                font-family: 'Bosch_Sans_Regular';
+                                font-size: 12px;
+                            }
+
+                        }
+
+                        .card-body{
+                            width: 100%;
+                            height: 70%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .text-body{
+                                font-family: 'Bosch_Sans_Bold';
+                                font-size: 30px;
+                            }
+
+                        }
+
+                    
+                    }
+
+                }
+
+                .content-grapichs{
+                    width: 98%;
+                    height: 74vh;
+                    //background-color: orange;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+
+                    .left-grapichs{
+                        width: 50%;
+                        height: 100%;
+                        //background-color: red;
+
+                        .card-grapich{
+                            width: 98%;
+                            height: 100%;
+                            background-color: var(--gray);
+
+                            .card-grapich-content-title{
+                                width: 100%;
+                                height: 10%;
+                                background-color: #D0D4D8;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+    
+                                .card-grapich-title-text{
+                                    font-family: 'Bosch_Sans_Bold';
+                                }
+    
+                            }
+
+                            .container-grapich{
+                                width: 100%;
+                                height: 80%;
+                                display: flex;
+                                justify-content: center;
+    
+                                .p-chart{
+                                    width: 80%;
+                                    height: 60%; 
+                                }
+
+                            }
+                            
+                        }
+
+                    }
+
+                    .right-grapichs{
+                        width: 50%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-direction: column;
+
+                        .card-grapich{
+                            width: 98%;
+                            height: 48%;
+                            background-color: var(--gray);
+
+                            .card-grapich-content-title{
+                                width: 100%;
+                                height: 10%;
+                                background-color: #D0D4D8;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+    
+                                .card-grapich-title-text{
+                                    font-family: 'Bosch_Sans_Bold';
+                                }
+    
+                            }
+
+                            .container-grapich{
+                                width: 100%;
+                                height: 80%;
+                                display: flex;
+                                justify-content: center;
+    
+                                .p-chart{
+                                    width: 80%;
+                                    height: 60%; 
+                                }
+
+                            }
+                            
+                        }
+
+                    }
+
+                }
+
+            }
+
+            .only-machines{
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                overflow: auto;
+
+                .line-inital-data{
+                    width: 100%;
+                    height: 20vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    margin-bottom: 20px;
+                    margin-top:10px;
+
+                    .green{
+                        background-color: var(--green);
+                    }
+
+                    .yellow{
+                        background-color: var(--yellow)
+                    }
+
+                    .blue{
+                        background-color: var(--LightBlue)
+                    }
+
+                    .red{
+                        background-color: var(--red)
+                    }
+
+                    .card{
+                        width: 28vh;
+                        height: 15vh;
+                        //background-color: blue;
+                        border-radius: 3px;
+                        box-shadow: 5px 5px 3px var(--gray);
+
+                        .card-title{
+                            width: 100%;
+                            height: 30%;
+                            text-align: center  ;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .title{
+                                font-family: 'Bosch_Sans_Regular';
+                                font-size: 12px;
+                            }
+
+                        }
+
+                        .card-body{
+                            width: 100%;
+                            height: 70%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .text-body{
+                                font-family: 'Bosch_Sans_Bold';
+                                font-size: 30px;
+                            }
+
+                        }
+
+                    
+                    }
+                }
+
+                .title-machine-name{
+                    width: 100%;
+                    height: 10vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    //background-color: yellow;
+    
+                    .title-machine-text{
+                        font-size: 20px;
+                        font-family: 'Bosch_Sans_Bold';
+                    }
+    
+                }
+    
+                .grapich{
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    //background-color: red;
+
+                    .p-chart{
+                        width: 98%;
+                    }
+                }
+
+                .line-card-tables{
+                    width: 100%;
+                    height: 20vh;
+                    //background-color: red;
+                    display: flex;
+                    justify-content: space-around;
+                    margin-bottom: 50px;
+
+                    .table_one{
+                        width: 48%;
+                        height: auto;
+                        display: flex;
+                        flex-direction: column;
+
+                        .table-title{
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-bottom: 5px;
+
+                            .table-title-text{
+                                font-family: 'Bosch_Sans_Bold';
+                                font-size: 18px;
+                            }
+                        }
+
+                        .table-body{
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            flex-direction: column;
+
+                            .header-table{
+                                width: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                margin-top: 2px;
+                                margin-bottom: 2px;
+
+                                .item-qtd{
+                                    width: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border: 0.25px solid black;
+
+                                    .item-qtd-text{
+                                        font-family: 'Bosch_Sans_Regular';
+                                        margin: 2px;
+                                    }
+                                }
+
+                            }
+
+                            .header-table-title{
+                                width: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                margin-top: 2px;
+                                margin-bottom: 2px;
+                                background-color: var(--gray);
+
+                                .item-qtd{
+                                    width: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border: 0.25px solid black;
+
+                                    .item-qtd-text-title{
+                                        font-family: 'Bosch_Sans_Bold';
+                                        margin: 3px;
+                                    }
+                                }
+
+                            }
+
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

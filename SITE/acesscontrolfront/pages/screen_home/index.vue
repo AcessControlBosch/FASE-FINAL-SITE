@@ -1,4 +1,5 @@
 <template>
+
     <div class="container">
 
         <HeaderWithLogout />
@@ -11,30 +12,31 @@
 
             </div>
 
-        <div class="buttons">
-            <div class="button-content">
-                <button class="button-function" v-on:click="$router.push('/screen_cvSeguranca')">
-                    <p class="tipo">Liberar Máquina</p>
-                    <i class="pi pi-lock"></i>
-                </button>
-                <button class="button-function" v-on:click="$router.push('/screen_registros')">
-                    <p class="tipo">Registros</p>
-                    <i class="pi pi-list" id="pi-reg"><i class="pi pi-pencil" id="pi-list"></i></i>
-                </button>
-            </div>
+            <div class="buttons">
+                <div class="button-content">
+                    <button class="button-function" v-on:click="$router.push('/screen_cvSeguranca')">
+                        <p class="tipo">Liberar Máquina</p>
+                        <i class="pi pi-lock"></i>
+                    </button>
+                    <button class="button-function" v-on:click="$router.push('/screen_registros')">
+                        <p class="tipo">Registros</p>
+                        <i class="pi pi-list" id="pi-reg"><i class="pi pi-pencil" id="pi-list"></i></i>
+                    </button>
+                </div>
 
-            <div class="button-content">
-                <button class="button-function" v-on:click="$router.push('/screen_qrCode')">
-                    <p class="tipo">Ler QrCode Novamente</p>
-                    <i class="pi pi-camera" id="pi-cam"></i>
-                </button>
-            </div>
-    
-            </div>
+                <div class="button-content">
+                    <button class="button-function" v-on:click="$router.push('/screen_qrCode')">
+                        <p class="tipo">Ler QrCode Novamente</p>
+                        <i class="pi pi-camera" id="pi-cam"></i>
+                    </button>
+                </div>
         
-        </div>
+                </div>
+            
+            </div>
 
     </div>
+
 </template>
 
 <script>

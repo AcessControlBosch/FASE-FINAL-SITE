@@ -1,0 +1,71 @@
+.container{
+    display: flex;
+    flex-direction: column;
+
+    .buttons{
+        // background-color: yellow;
+        width: 100%;
+        height: 80vh;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .button-content{
+            // background-color: pink;
+            width:80%;
+            height: 30vh;
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            .button-function{
+                width: 20%;
+                height: 70%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                margin: 15px;
+                border: 2px solid black;
+                border-radius: 7px;
+                background-color: white;
+                font-family: "Bosch_Sans_Regular";
+
+                &:hover{
+                    background-color: var(--gray);
+                    cursor: pointer;
+                }
+
+                #pi-dash{
+                    color: var(--green);
+                }
+
+                #pi-real{
+                    color: var(--DarkBlue);
+                }
+
+                #pi-register{
+                    color: var(--yellow);
+                }
+
+                #pi-data{
+                    color: var(--red);
+                }
+
+                .pi{
+                    margin-top: 15px;
+                    font-size:45px;
+
+                    #pi-list{
+                        font-size: 20px;
+                        position: relative;
+                        bottom: 30px;
+                        left: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
